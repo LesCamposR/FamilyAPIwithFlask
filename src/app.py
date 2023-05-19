@@ -74,6 +74,16 @@ def delete_member(member_id):
     else:
         return jsonify({"msg": "member does not exist"}), 400 
 
+@app.route('/member/<int:member_id>', methods=['PUT'])
+def update_member(member_id):
+    body = request.get_json()
+    print("Family member id:", member_id)
+    message = jackson_family.update_member(member_id, body)
+    if message:
+        return jsonify({"msg" : "member modify successfully"}), 200
+    else:
+        return jsonify({"msg": "member does not exist"}), 400 
+
 
 # this only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
