@@ -14,12 +14,29 @@ class FamilyStructure:
 
         # example list of members
         self._members = [{
-            "id": self._generateId(),
+            "id": 60024106,
             "frist_name": "John",
             "last_name": last_name,
             "age":33,
-            "lucky_number":[]
+            "lucky_number":[7, 13, 22]
+        },
+        {
+            "id": 4713787,
+            "frist_name": "Jane",
+            "last_name": last_name,
+            "age":35,
+            "lucky_number":[10, 14, 3]
+        },
+        {
+            "id": 37791432,
+            "frist_name": "Jimmy",
+            "last_name": last_name,
+            "age":5,
+            "lucky_number":[1]
         }]
+     
+
+
 
     # read-only: Use this method to generate random members ID's when adding members into the list
     def _generateId(self):
@@ -28,6 +45,7 @@ class FamilyStructure:
     def add_member(self, member):
         # fill this method and update the return
         adding_member = {}
+
         if 'id' in member:
             adding_member['id']=int(memeber['id'])
         else:
@@ -36,7 +54,7 @@ class FamilyStructure:
         adding_member['first_name']=str(member['first_name'])
         adding_member['last_name']= self.last_name
         adding_member['age']= int(member['age'])
-        adding_member['lucky_number']= member['lucky_numbers']
+        adding_member['lucky_numbers']= member['lucky_numbers']
 
         self._members.append(adding_member)
         print(adding_member)
