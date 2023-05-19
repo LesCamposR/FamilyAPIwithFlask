@@ -35,8 +35,26 @@ def handle_hello():
         "family": members
     }
 
-
     return jsonify(response_body), 200
+
+@app.route('/members', methods=['POST'])
+def add_member():
+    body = request.get_json()
+    """
+    {
+        "first_name": "Les"
+        "age": 33,
+        "lucky_numbers":[8, 7, 99]
+    
+    }
+    """
+    if isinstance(body, dict):
+        jackson_family.add_member(body)
+        return jsonify({"msg" : "member added"}), 200
+    else:
+        return jsonify({"msg" : "Failed"})
+
+    
 
 # this only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
