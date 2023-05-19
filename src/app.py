@@ -65,8 +65,15 @@ def get_member(member_id):
     else:
         return jsonify({"msg": "member does not exist"}), 400
 
-    
-    
+@app.route('/member/<int:member_id>', methods=['DELETE'])
+def delete_member(member_id):
+    print("Family member id:", member_id)
+    member = jackson_family.delete_member(member_id)
+    if member:
+        return jsonify({"msg" : "member deleted successfully"}), 200
+    else:
+        return jsonify({"msg": "member does not exist"}), 400 
+
 
 # this only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
