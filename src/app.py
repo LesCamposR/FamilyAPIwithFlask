@@ -53,7 +53,19 @@ def add_member():
         return jsonify({"msg" : "member added"}), 200
     else:
         return jsonify({"msg" : "Failed"})
+    
+    return jsonify(response_body), 200
 
+@app.route('/member/<int:member_id>', methods=['GET'])
+def get_member(member_id):
+    print("Family member id:", member_id)
+    member = jackson_family.get_member(member_id)
+    if member:
+        return jsonify(member), 200
+    else:
+        return jsonify({"msg": "member does not exist"}), 400
+
+    
     
 
 # this only runs if `$ python src/app.py` is executed
